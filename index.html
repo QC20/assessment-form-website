@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager AI Assessment Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1>Manager AI Assessment Form</h1>
+            <p>Please complete all sections of this assessment. Fields marked with * are required.</p>
+        </div>
+        
+        <form id="surveyForm">
+            <div class="container">
+                <!-- Tech-anxiety scale -->
+                <div class="section">
+                    <h2>Tech-Anxiety Scale</h2>
+                    <p>Rate your agreement with each statement from 1 (Strongly Disagree) to 5 (Strongly Agree)</p>
+                    
+                    <div class="form-group">
+                        <label class="required">1. I feel anxious when using new technology.</label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="tech1" value="1" required><br>1<br>Strongly Disagree</div>
+                            <div class="rating-option"><input type="radio" name="tech1" value="2"><br>2</div>
+                            <div class="rating-option"><input type="radio" name="tech1" value="3"><br>3</div>
+                            <div class="rating-option"><input type="radio" name="tech1" value="4"><br>4</div>
+                            <div class="rating-option"><input type="radio" name="tech1" value="5"><br>5<br>Strongly Agree</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">2. I worry about making mistakes with AI tools.</label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="tech2" value="1" required><br>1<br>Strongly Disagree</div>
+                            <div class="rating-option"><input type="radio" name="tech2" value="2"><br>2</div>
+                            <div class="rating-option"><input type="radio" name="tech2" value="3"><br>3</div>
+                            <div class="rating-option"><input type="radio" name="tech2" value="4"><br>4</div>
+                            <div class="rating-option"><input type="radio" name="tech2" value="5"><br>5<br>Strongly Agree</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">3. I find keeping up with technological changes overwhelming.</label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="tech3" value="1" required><br>1<br>Strongly Disagree</div>
+                            <div class="rating-option"><input type="radio" name="tech3" value="2"><br>2</div>
+                            <div class="rating-option"><input type="radio" name="tech3" value="3"><br>3</div>
+                            <div class="rating-option"><input type="radio" name="tech3" value="4"><br>4</div>
+                            <div class="rating-option"><input type="radio" name="tech3" value="5"><br>5<br>Strongly Agree</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">4. I avoid using new digital tools whenever possible.</label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="tech4" value="1" required><br>1<br>Strongly Disagree</div>
+                            <div class="rating-option"><input type="radio" name="tech4" value="2"><br>2</div>
+                            <div class="rating-option"><input type="radio" name="tech4" value="3"><br>3</div>
+                            <div class="rating-option"><input type="radio" name="tech4" value="4"><br>4</div>
+                            <div class="rating-option"><input type="radio" name="tech4" value="5"><br>5<br>Strongly Agree</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">5. I feel uncomfortable with AI making decisions in my domain.</label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="tech5" value="1" required><br>1<br>Strongly Disagree</div>
+                            <div class="rating-option"><input type="radio" name="tech5" value="2"><br>2</div>
+                            <div class="rating-option"><input type="radio" name="tech5" value="3"><br>3</div>
+                            <div class="rating-option"><input type="radio" name="tech5" value="4"><br>4</div>
+                            <div class="rating-option"><input type="radio" name="tech5" value="5"><br>5<br>Strongly Agree</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Managerial self-efficacy -->
+                <div class="section">
+                    <h2>Managerial Self-Efficacy</h2>
+                    <p>Rate your confidence in each area from 1 (Not at all confident) to 5 (Extremely confident)</p>
+                    
+                    <div class="form-group">
+                        <label class="required">1. Making critical decisions under pressure</label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="mgmt1" value="1" required><br>1<br>Not confident</div>
+                            <div class="rating-option"><input type="radio" name="mgmt1" value="2"><br>2</div>
+                            <div class="rating-option"><input type="radio" name="mgmt1" value="3"><br>3</div>
+                            <div class="rating-option"><input type="radio" name="mgmt1" value="4"><br>4</div>
+                            <div class="rating-option"><input type="radio" name="mgmt1" value="5"><br>5<br>Very confident</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">2. Leading teams through organizational change</label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="mgmt2" value="1" required><br>1<br>Not confident</div>
+                            <div class="rating-option"><input type="radio" name="mgmt2" value="2"><br>2</div>
+                            <div class="rating-option"><input type="radio" name="mgmt2" value="3"><br>3</div>
+                            <div class="rating-option"><input type="radio" name="mgmt2" value="4"><br>4</div>
+                            <div class="rating-option"><input type="radio" name="mgmt2" value="5"><br>5<br>Very confident</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">3. Delegating responsibilities effectively</label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="mgmt3" value="1" required><br>1<br>Not confident</div>
+                            <div class="rating-option"><input type="radio" name="mgmt3" value="2"><br>2</div>
+                            <div class="rating-option"><input type="radio" name="mgmt3" value="3"><br>3</div>
+                            <div class="rating-option"><input type="radio" name="mgmt3" value="4"><br>4</div>
+                            <div class="rating-option"><input type="radio" name="mgmt3" value="5"><br>5<br>Very confident</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">4. Managing conflict within your team</label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="mgmt4" value="1" required><br>1<br>Not confident</div>
+                            <div class="rating-option"><input type="radio" name="mgmt4" value="2"><br>2</div>
+                            <div class="rating-option"><input type="radio" name="mgmt4" value="3"><br>3</div>
+                            <div class="rating-option"><input type="radio" name="mgmt4" value="4"><br>4</div>
+                            <div class="rating-option"><input type="radio" name="mgmt4" value="5"><br>5<br>Very confident</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">5. Integrating new technologies into workflows</label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="mgmt5" value="1" required><br>1<br>Not confident</div>
+                            <div class="rating-option"><input type="radio" name="mgmt5" value="2"><br>2</div>
+                            <div class="rating-option"><input type="radio" name="mgmt5" value="3"><br>3</div>
+                            <div class="rating-option"><input type="radio" name="mgmt5" value="4"><br>4</div>
+                            <div class="rating-option"><input type="radio" name="mgmt5" value="5"><br>5<br>Very confident</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Demographics -->
+                <div class="section">
+                    <h2>Demographics</h2>
+                    
+                    <div class="form-group">
+                        <label for="age" class="required">Age:</label>
+                        <input type="number" id="age" name="age" min="18" max="120" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gender" class="required">Gender:</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="nonbinary">Non-binary</option>
+                            <option value="other">Other</option>
+                            <option value="prefer">Prefer not to say</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="years" class="required">Years in current role:</label>
+                        <input type="number" id="years" name="years" min="0" max="60" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mgmt_years" class="required">Years in management:</label>
+                        <input type="number" id="mgmt_years" name="mgmt_years" min="0" max="60" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="industry" class="required">Industry:</label>
+                        <select id="industry" name="industry" required>
+                            <option value="">Select</option>
+                            <option value="finance">Financial Services</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="retail">Retail</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="tech">Technology</option>
+                            <option value="education">Education</option>
+                            <option value="government">Government</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="org_size" class="required">Organization Size:</label>
+                        <select id="org_size" name="org_size" required>
+                            <option value="">Select</option>
+                            <option value="small">Small (< 250 employees)</option>
+                            <option value="medium">Medium (250-999 employees)</option>
+                            <option value="large">Large (1,000+ employees)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="education" class="required">Highest Education:</label>
+                        <select id="education" name="education" required>
+                            <option value="">Select</option>
+                            <option value="highschool">High School</option>
+                            <option value="bachelors">Bachelor's Degree</option>
+                            <option value="masters">Master's Degree</option>
+                            <option value="doctorate">Doctorate</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mgmt_level" class="required">Managerial Layer:</label>
+                        <select id="mgmt_level" name="mgmt_level" required>
+                            <option value="">Select</option>
+                            <option value="lower">Lower Management</option>
+                            <option value="middle">Middle Management</option>
+                            <option value="upper">Upper Management (C-suite)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Digital Literacy (1=novice, 5=expert):</label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="digital" value="1" required><br>1</div>
+                            <div class="rating-option"><input type="radio" name="digital" value="2"><br>2</div>
+                            <div class="rating-option"><input type="radio" name="digital" value="3"><br>3</div>
+                            <div class="rating-option"><input type="radio" name="digital" value="4"><br>4</div>
+                            <div class="rating-option"><input type="radio" name="digital" value="5"><br>5</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">AI Literacy (1=novice, 5=expert):</label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="ai_lit" value="1" required><br>1</div>
+                            <div class="rating-option"><input type="radio" name="ai_lit" value="2"><br>2</div>
+                            <div class="rating-option"><input type="radio" name="ai_lit" value="3"><br>3</div>
+                            <div class="rating-option"><input type="radio" name="ai_lit" value="4"><br>4</div>
+                            <div class="rating-option"><input type="radio" name="ai_lit" value="5"><br>5</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ai_exposure" class="required">AI Exposure:</label>
+                        <select id="ai_exposure" name="ai_exposure" required>
+                            <option value="">Select</option>
+                            <option value="none">None</option>
+                            <option value="minimal">Minimal</option>
+                            <option value="daily">Daily tools (e.g., chatbots)</option>
+                            <option value="pilot">Ad-hoc pilots</option>
+                            <option value="project">Project leads</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Involved in AI/Digital Initiatives:</label>
+                        <div class="rating-scale" style="justify-content: flex-start; gap: 30px;">
+                            <div style="display: flex; align-items: center;">
+                                <input type="radio" name="ai_initiative" value="yes" style="margin-right: 5px;" required>
+                                <span>Yes</span>
+                            </div>
+                            <div style="display: flex; align-items: center;">
+                                <input type="radio" name="ai_initiative" value="no" style="margin-right: 5px;">
+                                <span>No</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="loading" id="loadingMessage">Submitting your response</div>
+            <div class="success-message" id="successMessage">Thank you! Your response has been recorded successfully.</div>
+            <div class="error-message" id="errorMessage">An error occurred. Please try again later.</div>
+            
+            <button type="submit">Submit Assessment</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('surveyForm');
+            const loadingMessage = document.getElementById('loadingMessage');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Generate a unique ID for each submission
+            function generateUniqueId() {
+                return 'P' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+            }
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading message
+                loadingMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+                
+                // Create FormData object
+                const formData = new FormData(form);
+                
+                // Convert FormData to JSON
+                const jsonData = {};
+                formData.forEach((value, key) => {
+                    jsonData[key] = value;
+                });
+                
+                // Add timestamp and unique ID
+                jsonData.timestamp = new Date().toISOString();
+                jsonData.participant_id = generateUniqueId();
+                
+                // Send data to backend API
+                fetch('https://your-api-endpoint.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(jsonData)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Handle success
+                    loadingMessage.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    form.reset();
+                    
+                    // Optional: Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Optional: Redirect after successful submission
+                    // setTimeout(() => {
+                    //     window.location.href = 'thank-you.html';
+                    // }, 3000);
+                })
+                .catch(error => {
+                    // Handle error
+                    console.error('Error:', error);
+                    loadingMessage.style.display = 'none';
+                    errorMessage.style.display = 'block';
+                    
+                    // For testing/development without a backend
+                    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                        console.log('Data would be sent to API:', jsonData);
+                        successMessage.style.display = 'block';
+                        errorMessage.style.display = 'none';
+                        form.reset();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
