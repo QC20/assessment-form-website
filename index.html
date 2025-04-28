@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manager AI Assessment Form</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="page">
@@ -156,6 +157,10 @@
                             <option value="other">Other</option>
                             <option value="prefer">Prefer not to say</option>
                         </select>
+                        <div id="gender-other-container" class="other-input" style="display: none; margin-top: 10px;">
+                            <label for="gender-other">Please specify:</label>
+                            <input type="text" id="gender-other" name="gender-other">
+                        </div>
                     </div>
                     
                     <div class="form-group">
@@ -181,16 +186,30 @@
                             <option value="government">Government</option>
                             <option value="other">Other</option>
                         </select>
+                        <div id="industry-other-container" class="other-input" style="display: none; margin-top: 10px;">
+                            <label for="industry-other">Please specify:</label>
+                            <input type="text" id="industry-other" name="industry-other">
+                        </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="org_size" class="required">Organization Size:</label>
                         <select id="org_size" name="org_size" required>
                             <option value="">Select</option>
-                            <option value="small">Small (< 250 employees)</option>
-                            <option value="medium">Medium (250-999 employees)</option>
-                            <option value="large">Large (1,000+ employees)</option>
+                            <option value="micro">Micro (1-9 employees)</option>
+                            <option value="small">Small (10-49 employees)</option>
+                            <option value="medium-small">Medium-Small (50-99 employees)</option>
+                            <option value="medium">Medium (100-249 employees)</option>
+                            <option value="large-medium">Large-Medium (250-499 employees)</option>
+                            <option value="large">Large (500-999 employees)</option>
+                            <option value="enterprise">Enterprise (1,000-4,999 employees)</option>
+                            <option value="corporate">Corporate (5,000+ employees)</option>
+                            <option value="other">Other</option>
                         </select>
+                        <div id="org_size-other-container" class="other-input" style="display: none; margin-top: 10px;">
+                            <label for="org_size-other">Please specify:</label>
+                            <input type="text" id="org_size-other" name="org_size-other">
+                        </div>
                     </div>
                     
                     <div class="form-group">
@@ -203,6 +222,10 @@
                             <option value="doctorate">Doctorate</option>
                             <option value="other">Other</option>
                         </select>
+                        <div id="education-other-container" class="other-input" style="display: none; margin-top: 10px;">
+                            <label for="education-other">Please specify:</label>
+                            <input type="text" id="education-other" name="education-other">
+                        </div>
                     </div>
                     
                     <div class="form-group">
@@ -272,84 +295,5 @@
             <button type="submit">Submit Assessment</button>
         </form>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('surveyForm');
-            const loadingMessage = document.getElementById('loadingMessage');
-            const successMessage = document.getElementById('successMessage');
-            const errorMessage = document.getElementById('errorMessage');
-            
-            // Generate a unique ID for each submission
-            function generateUniqueId() {
-                return 'P' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-            }
-            
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Show loading message
-                loadingMessage.style.display = 'block';
-                successMessage.style.display = 'none';
-                errorMessage.style.display = 'none';
-                
-                // Create FormData object
-                const formData = new FormData(form);
-                
-                // Convert FormData to JSON
-                const jsonData = {};
-                formData.forEach((value, key) => {
-                    jsonData[key] = value;
-                });
-                
-                // Add timestamp and unique ID
-                jsonData.timestamp = new Date().toISOString();
-                jsonData.participant_id = generateUniqueId();
-                
-                // Send data to backend API
-                fetch('https://your-api-endpoint.com/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(jsonData)
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Handle success
-                    loadingMessage.style.display = 'none';
-                    successMessage.style.display = 'block';
-                    form.reset();
-                    
-                    // Optional: Scroll to success message
-                    successMessage.scrollIntoView({ behavior: 'smooth' });
-                    
-                    // Optional: Redirect after successful submission
-                    // setTimeout(() => {
-                    //     window.location.href = 'thank-you.html';
-                    // }, 3000);
-                })
-                .catch(error => {
-                    // Handle error
-                    console.error('Error:', error);
-                    loadingMessage.style.display = 'none';
-                    errorMessage.style.display = 'block';
-                    
-                    // For testing/development without a backend
-                    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                        console.log('Data would be sent to API:', jsonData);
-                        successMessage.style.display = 'block';
-                        errorMessage.style.display = 'none';
-                        form.reset();
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>

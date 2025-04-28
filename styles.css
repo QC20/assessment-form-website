@@ -125,6 +125,23 @@ button[type="submit"]:hover {
     content: "...";
     animation: dots 1.5s steps(5, end) infinite;
 }
+.other-input {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+.other-input label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
+}
+.other-input input[type="text"] {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}  
 @keyframes dots {
     0%, 20% { content: "."; }
     40% { content: ".."; }
