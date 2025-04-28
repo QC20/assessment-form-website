@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Replace this URL with the one from your Google Script deployment
-        const googleScriptUrl = 'https://script.google.com/macros/library/d/1t9a-vvDoTB9aQBLtNobJRhwFgcKnUWoEn9_pMzrBtkCoUDDQsivstqNE/1';
+        const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbwskHFT99xWppPdaSLCypO3C6BPm_GP7zEFzh9lcHQkE6Hx0gTSO_-ypvmnrgeiJRpe/exec';
         
         fetch(googleScriptUrl, {
             method: 'POST',
