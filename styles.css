@@ -109,6 +109,60 @@ button[type="submit"] {
     margin: 20px auto;
     width: 200px;
 }
+/* Horizontal layout for rating scales */
+.rating-scale {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  /* Horizontal layout for radio button groups */
+  .radio-group-horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 10px 0;
+  }
+  
+  .radio-group-horizontal > div {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Horizontal layout for checkbox groups */
+  .checkbox-group-horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 10px 0;
+  }
+  
+  .checkbox-group-horizontal > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  /* Style for label inside horizontal groups */
+  .radio-group-horizontal label,
+  .checkbox-group-horizontal label {
+    margin-left: 5px;
+    display: inline;
+    font-weight: normal;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    .radio-group-horizontal,
+    .checkbox-group-horizontal {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
 button[type="submit"]:hover {
     background-color: #2980b9;
 }
@@ -141,7 +195,42 @@ button[type="submit"]:hover {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-}  
+}
+.checkbox-group, .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkbox-option, .radio-option {
+    display: flex;
+    align-items: flex-start;
+}
+
+.checkbox-option input[type="checkbox"], .radio-option input[type="radio"] {
+    margin-right: 8px;
+    margin-top: 3px;
+}
+
+.checkbox-option label, .radio-option label {
+    font-weight: normal;
+    display: inline;
+}
+
+textarea {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 60px;
+}
+
+h3 {
+    font-size: 16px;
+    margin: 15px 0 10px;
+    color: #3498db;
+}
 @keyframes dots {
     0%, 20% { content: "."; }
     40% { content: ".."; }

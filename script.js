@@ -1,4 +1,4 @@
-// script.js
+// updated-script.js
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('surveyForm');
     const loadingMessage = document.getElementById('loadingMessage');
@@ -9,37 +9,112 @@ document.addEventListener('DOMContentLoaded', function() {
         return 'P' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
     }
 
-    // Show/hide "Other" text inputs
-    function setupOtherField(selectId) {
-        const sel = document.getElementById(selectId);
-        const otherContainer = document.getElementById(selectId + '-other-container');
-        const otherInput = otherContainer.querySelector('input');
+    // Show/hide "Other" text inputs for both select elements and checkboxes
+    function setupOtherField(elementId, isCheckbox = false) {
+        const element = document.getElementById(elementId);
+        if (!element) return; // Skip if element doesn't exist
         
-        // Initialize on page load in case "Other" is selected
-        if (sel.value === 'other') {
-            otherContainer.style.display = 'block';
-            otherInput.setAttribute('required', 'required');
-        }
+        const otherContainer = document.getElementById(elementId + '-other-container');
+        if (!otherContainer) return; // Skip if container doesn't exist
         
-        sel.addEventListener('change', () => {
-            if (sel.value === 'other') {
+        const otherInput = document.getElementById(elementId + '_other_specify') || 
+                           otherContainer.querySelector('input');
+        if (!otherInput) return; // Skip if input doesn't exist
+        
+        if (isCheckbox) {
+            // For checkboxes
+            element.addEventListener('change', () => {
+                if (element.checked) {
+                    otherContainer.style.display = 'block';
+                    otherInput.setAttribute('required', 'required');
+                } else {
+                    otherContainer.style.display = 'none';
+                    otherInput.removeAttribute('required');
+                    otherInput.value = '';
+                }
+            });
+            
+            // Initialize on page load
+            if (element.checked) {
                 otherContainer.style.display = 'block';
                 otherInput.setAttribute('required', 'required');
-            } else {
-                otherContainer.style.display = 'none';
-                otherInput.removeAttribute('required');
-                otherInput.value = '';
             }
-        });
+        } else {
+            // For select dropdowns
+            element.addEventListener('change', () => {
+                if (element.value === 'other') {
+                    otherContainer.style.display = 'block';
+                    otherInput.setAttribute('required', 'required');
+                } else {
+                    otherContainer.style.display = 'none';
+                    otherInput.removeAttribute('required');
+                    otherInput.value = '';
+                }
+            });
+            
+            // Initialize on page load
+            if (element.value === 'other') {
+                otherContainer.style.display = 'block';
+                otherInput.setAttribute('required', 'required');
+            }
+        }
     }
 
-    // Initialize each "Other" field
-    ['gender', 'industry', 'org_size', 'education'].forEach(id => {
-        if (document.getElementById(id)) {
-            setupOtherField(id);
+    // Set up event listeners for specific checkbox "Other" fields
+    function setupCheckboxOther(checkboxId, otherSpecifyId) {
+        const checkbox = document.getElementById(checkboxId);
+        const otherSpecify = document.getElementById(otherSpecifyId);
+        
+        if (!checkbox || !otherSpecify) return; // Skip if elements don't exist
+        
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                otherSpecify.style.display = 'inline-block';
+                otherSpecify.parentElement.style.display = 'flex';
+            } else {
+                otherSpecify.style.display = 'none';
+                otherSpecify.value = '';
+            }
+        });
+        
+        // Initialize on page load
+        if (checkbox.checked) {
+            otherSpecify.style.display = 'inline-block';
+            otherSpecify.parentElement.style.display = 'flex';
+        } else {
+            otherSpecify.style.display = 'none';
         }
-    });
+    }
 
+    // Initialize the original "Other" fields
+    ['gender', 'industry', 'org_size', 'education'].forEach(id => {
+        setupOtherField(id);
+    });
+    
+    // Initialize new checkbox "Other" fields
+    setupCheckboxOther('ai_task_other', 'ai_task_other_specify');
+    setupCheckboxOther('ai_value_other', 'ai_value_other_specify');
+    
+    // Handle checkbox validation for "Select up to two" fields
+    function setupLimitedCheckboxes(name, maxAllowed) {
+        const checkboxes = document.querySelectorAll(`input[name="${name}"]`);
+        
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const checked = document.querySelectorAll(`input[name="${name}"]:checked`);
+                
+                if (checked.length > maxAllowed) {
+                    checkbox.checked = false;
+                    alert(`Please select up to ${maxAllowed} options.`);
+                }
+            });
+        });
+    }
+    
+    // Set up the "Select up to two" validation for AI applications
+    setupLimitedCheckboxes('ai_value_applications', 2);
+
+    // Form submission
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -49,19 +124,54 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const formData = new FormData(form);
         const jsonData = {};
+        
+        // Collect checkbox values into arrays
+        const checkboxGroups = {};
+        
         formData.forEach((value, key) => {
-            // Handle "Other" fields by combining them with their parent fields
-            if (key.endsWith('-other')) {
+            // Handle checkboxes (they can have multiple values for same name)
+            if (key === 'ai_tasks' || key === 'ai_value_applications') {
+                if (!checkboxGroups[key]) {
+                    checkboxGroups[key] = [];
+                }
+                checkboxGroups[key].push(value);
+            }
+            // Handle "Other" fields
+            else if (key.endsWith('-other')) {
                 const parentKey = key.replace('-other', '');
                 if (jsonData[parentKey] === 'other') {
                     jsonData[parentKey] = value;
                 }
-            } else if (!key.endsWith('-other')) {
+            } 
+            // Handle the new "Other specify" fields for checkboxes
+            else if (key === 'ai_task_other_specify' && formData.get('ai_tasks') && formData.getAll('ai_tasks').includes('other')) {
+                // This will be added with the checkboxGroups later
+            } 
+            else if (key === 'ai_value_other_specify' && formData.get('ai_value_applications') && formData.getAll('ai_value_applications').includes('other')) {
+                // This will be added with the checkboxGroups later
+            }
+            // Regular fields
+            else if (!key.endsWith('-other')) {
                 jsonData[key] = value;
             }
         });
         
+        // Add special handling for checkbox groups
+        Object.keys(checkboxGroups).forEach(key => {
+            // Convert to JSON string to preserve the array
+            jsonData[key] = JSON.stringify(checkboxGroups[key]);
+            
+            // Special handling for "other" checkboxes
+            if (key === 'ai_tasks' && checkboxGroups[key].includes('other')) {
+                jsonData['ai_task_other_value'] = formData.get('ai_task_other_specify');
+            }
+            if (key === 'ai_value_applications' && checkboxGroups[key].includes('other')) {
+                jsonData['ai_value_other_value'] = formData.get('ai_value_other_specify');
+            }
+        });
+        
         jsonData.timestamp = new Date().toISOString();
+        jsonData.participant_id = generateUniqueId();
         
         // Convert to URL encoded form data for Google Sheets
         const formDataUrl = new URLSearchParams();
