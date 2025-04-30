@@ -124,27 +124,27 @@
     
     <div class="form-group">
         <label class="required">How frequently do you use AI or AI-supported tools in your managerial role?</label>
-        <div style="margin-top: 10px;">
-            <div style="margin-bottom: 5px;">
+        <div class="radio-group compact">
+            <label class="radio-option">
                 <input type="radio" id="ai_freq_never" name="ai_frequency" value="never" required>
-                <label for="ai_freq_never" style="display: inline; font-weight: normal;">Never</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Never</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_freq_rarely" name="ai_frequency" value="rarely">
-                <label for="ai_freq_rarely" style="display: inline; font-weight: normal;">Rarely (a few times a year)</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Rarely (a few times a year)</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_freq_occasionally" name="ai_frequency" value="occasionally">
-                <label for="ai_freq_occasionally" style="display: inline; font-weight: normal;">Occasionally (monthly)</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Occasionally (monthly)</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_freq_frequently" name="ai_frequency" value="frequently">
-                <label for="ai_freq_frequently" style="display: inline; font-weight: normal;">Frequently (weekly)</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Frequently (weekly)</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_freq_daily" name="ai_frequency" value="daily">
-                <label for="ai_freq_daily" style="display: inline; font-weight: normal;">Daily</label>
-            </div>
+                <span>Daily</span>
+            </label>
         </div>
     </div>
     
@@ -262,50 +262,61 @@
         </div>
     </div>
     
+    <!-- Organizational AI Context section -->
     <h3 style="margin-top: 20px; font-size: 16px;">Organizational AI Context</h3>
     
     <div class="form-group">
         <label class="required">How would you describe your organization's current approach to AI adoption?</label>
-        <div style="margin-top: 10px;">
-            <div style="margin-bottom: 5px;">
-                <input type="radio" id="org_ai_none" name="org_ai_adoption" value="not_started" required>
-                <label for="org_ai_none" style="display: inline; font-weight: normal;">Not started (no AI use)</label>
-            </div>
-            <div style="margin-bottom: 5px;">
-                <input type="radio" id="org_ai_early" name="org_ai_adoption" value="early_stages">
-                <label for="org_ai_early" style="display: inline; font-weight: normal;">Early stages (exploring or piloting AI tools)</label>
-            </div>
-            <div style="margin-bottom: 5px;">
-                <input type="radio" id="org_ai_moderate" name="org_ai_adoption" value="moderate">
-                <label for="org_ai_moderate" style="display: inline; font-weight: normal;">Moderate adoption (AI used in some areas)</label>
-            </div>
-            <div style="margin-bottom: 5px;">
-                <input type="radio" id="org_ai_advanced" name="org_ai_adoption" value="advanced">
-                <label for="org_ai_advanced" style="display: inline; font-weight: normal;">Advanced adoption (AI widely integrated)</label>
-            </div>
+        <div class="radio-group compact">
+            <label class="radio-option">
+                <input type="radio" name="org_ai_adoption" value="not_started" required>
+                <span>Not started (no AI use)</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="org_ai_adoption" value="early_stages">
+                <span>Early stages (exploring or piloting AI tools)</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="org_ai_adoption" value="moderate">
+                <span>Moderate adoption (AI used in some areas)</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="org_ai_adoption" value="advanced">
+                <span>Advanced adoption (AI widely integrated)</span>
+            </label>
         </div>
     </div>
     
     <div class="form-group">
-        <label class="required">Does your organization provide training or resources for managers to use AI tools?</label>
-        <div style="margin-top: 10px;">
-            <div style="margin-bottom: 5px;">
-                <input type="radio" id="org_training_regular" name="org_ai_training" value="regular" required>
-                <label for="org_training_regular" style="display: inline; font-weight: normal;">Yes, regularly</label>
-            </div>
-            <div style="margin-bottom: 5px;">
-                <input type="radio" id="org_training_limited" name="org_ai_training" value="limited">
-                <label for="org_training_limited" style="display: inline; font-weight: normal;">Yes, but limited</label>
-            </div>
-            <div style="margin-bottom: 5px;">
-                <input type="radio" id="org_training_no" name="org_ai_training" value="no">
-                <label for="org_training_no" style="display: inline; font-weight: normal;">No</label>
-            </div>
-            <div style="margin-bottom: 5px;">
-                <input type="radio" id="org_training_unsure" name="org_ai_training" value="unsure">
-                <label for="org_training_unsure" style="display: inline; font-weight: normal;">Unsure</label>
-            </div>
+        <label class="required">How frequently do you use AI or AI-supported tools in your managerial role?</label>
+        <div class="radio-group compact">
+            <label class="radio-option">
+                <input type="radio" id="ai_freq_never" name="ai_frequency" value="never" required onchange="toggleAIToolsField(this)">
+                <span>Never</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" id="ai_freq_rarely" name="ai_frequency" value="rarely" onchange="toggleAIToolsField(this)">
+                <span>Rarely (a few times a year)</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" id="ai_freq_occasionally" name="ai_frequency" value="occasionally" onchange="toggleAIToolsField(this)">
+                <span>Occasionally (monthly)</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" id="ai_freq_frequently" name="ai_frequency" value="frequently" onchange="toggleAIToolsField(this)">
+                <span>Frequently (weekly)</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" id="ai_freq_daily" name="ai_frequency" value="daily" onchange="toggleAIToolsField(this)">
+                <span>Daily</span>
+            </label>
         </div>
+    </div>
+    
+    <!-- This will appear only when selecting non-"Never" options -->
+    <div class="form-group" id="aiToolsField" style="display: none;">
+        <label for="ai_tools_specific" class="required">Which specific AI tools do you use in your managerial work?</label>
+        <input type="text" id="ai_tools_specific" name="ai_tools_specific" style="width: 95%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
     </div>
     
     <div class="form-group">
@@ -321,97 +332,97 @@
     
     <div class="form-group">
         <label class="required">Have you participated in any training or discussions about AI in management?</label>
-        <div style="margin-top: 10px;">
-            <div style="margin-bottom: 5px;">
+        <div class="radio-group compact">
+            <label class="radio-option">
                 <input type="radio" id="ai_training_formal" name="ai_training" value="formal" required>
-                <label for="ai_training_formal" style="display: inline; font-weight: normal;">Yes, formal training</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Yes, formal training</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_training_informal" name="ai_training" value="informal">
-                <label for="ai_training_informal" style="display: inline; font-weight: normal;">Yes, informal discussions</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Yes, informal discussions</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_training_no" name="ai_training" value="no">
-                <label for="ai_training_no" style="display: inline; font-weight: normal;">No</label>
-            </div>
+                <span>No</span>
+            </label>
         </div>
     </div>
     
     <div class="form-group">
         <label class="required">How do you think AI will impact the role of managers in the next 5-10 years?</label>
-        <div style="margin-top: 10px;">
-            <div style="margin-bottom: 5px;">
+        <div class="radio-group compact">
+            <label class="radio-option">
                 <input type="radio" id="ai_future_reduce" name="ai_future_impact" value="reduce" required>
-                <label for="ai_future_reduce" style="display: inline; font-weight: normal;">Significantly reduce the need for managers</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Significantly reduce the need for managers</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_future_change" name="ai_future_impact" value="change">
-                <label for="ai_future_change" style="display: inline; font-weight: normal;">Change the nature of managerial work</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Change the nature of managerial work</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_future_enhance" name="ai_future_impact" value="enhance">
-                <label for="ai_future_enhance" style="display: inline; font-weight: normal;">Enhance managerial capabilities</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Enhance managerial capabilities</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_future_little" name="ai_future_impact" value="little">
-                <label for="ai_future_little" style="display: inline; font-weight: normal;">Have little to no impact</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Have little to no impact</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_future_unsure" name="ai_future_impact" value="unsure">
-                <label for="ai_future_unsure" style="display: inline; font-weight: normal;">Unsure</label>
-            </div>
+                <span>Unsure</span>
+            </label>
         </div>
     </div>
     
     <div class="form-group">
         <label class="required">What is your level of openness to adopting AI tools in your managerial work?</label>
-        <div style="margin-top: 10px;">
-            <div style="margin-bottom: 5px;">
+        <div class="radio-group compact">
+            <label class="radio-option">
                 <input type="radio" id="ai_openness_very_resistant" name="ai_openness" value="very_resistant" required>
-                <label for="ai_openness_very_resistant" style="display: inline; font-weight: normal;">Very resistant</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Very resistant</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_openness_somewhat_resistant" name="ai_openness" value="somewhat_resistant">
-                <label for="ai_openness_somewhat_resistant" style="display: inline; font-weight: normal;">Somewhat resistant</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Somewhat resistant</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_openness_neutral" name="ai_openness" value="neutral">
-                <label for="ai_openness_neutral" style="display: inline; font-weight: normal;">Neutral</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Neutral</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_openness_somewhat_open" name="ai_openness" value="somewhat_open">
-                <label for="ai_openness_somewhat_open" style="display: inline; font-weight: normal;">Somewhat open</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Somewhat open</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_openness_very_open" name="ai_openness" value="very_open">
-                <label for="ai_openness_very_open" style="display: inline; font-weight: normal;">Very open</label>
-            </div>
+                <span>Very open</span>
+            </label>
         </div>
     </div>
     
     <div class="form-group">
         <label class="required">How important do you think it is for managers to develop new skills to stay relevant in an AI-driven workplace?</label>
-        <div style="margin-top: 10px;">
-            <div style="margin-bottom: 5px;">
+        <div class="radio-group compact">
+            <label class="radio-option">
                 <input type="radio" id="ai_skills_not" name="ai_skills_importance" value="not_important" required>
-                <label for="ai_skills_not" style="display: inline; font-weight: normal;">Not important</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Not important</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_skills_slightly" name="ai_skills_importance" value="slightly_important">
-                <label for="ai_skills_slightly" style="display: inline; font-weight: normal;">Slightly important</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Slightly important</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_skills_moderately" name="ai_skills_importance" value="moderately_important">
-                <label for="ai_skills_moderately" style="display: inline; font-weight: normal;">Moderately important</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Moderately important</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_skills_very" name="ai_skills_importance" value="very_important">
-                <label for="ai_skills_very" style="display: inline; font-weight: normal;">Very important</label>
-            </div>
-            <div style="margin-bottom: 5px;">
+                <span>Very important</span>
+            </label>
+            <label class="radio-option">
                 <input type="radio" id="ai_skills_essential" name="ai_skills_importance" value="essential">
-                <label for="ai_skills_essential" style="display: inline; font-weight: normal;">Essential</label>
-            </div>
+                <span>Essential</span>
+            </label>
         </div>
     </div>
     
@@ -549,6 +560,34 @@
                             <option value="middle">Middle Management</option>
                             <option value="upper">Upper Management (C-suite)</option>
                         </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="team_size" class="required">Number of direct reports/team size:</label>
+                        <select id="team_size" name="team_size" required>
+                            <option value="">Select</option>
+                            <option value="none">0 (Individual contributor with management responsibilities)</option>
+                            <option value="small">1-5 team members</option>
+                            <option value="medium">6-15 team members</option>
+                            <option value="large">16-30 team members</option>
+                            <option value="very_large">31-50 team members</option>
+                            <option value="extra_large">50+ team members</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="language_status" class="required">Language proficiency:</label>
+                        <select id="language_status" name="language_status" required>
+                            <option value="">Select</option>
+                            <option value="monolingual">Monolingual (fluent in one language)</option>
+                            <option value="bilingual">Bilingual (fluent in two languages)</option>
+                            <option value="multilingual">Multilingual (fluent in more than two languages)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="primary_language">Primary working language:</label>
+                        <input type="text" id="primary_language" name="primary_language" placeholder="e.g., English, Spanish, Mandarin">
                     </div>
                     
                     <div class="form-group">

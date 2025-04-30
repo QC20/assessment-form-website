@@ -9,6 +9,46 @@ document.addEventListener('DOMContentLoaded', function() {
         return 'P' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
     }
 
+    // Initialize AI tools field visibility based on initial selection
+    function initAIToolsField() {
+        const selectedOption = document.querySelector('input[name="ai_frequency"]:checked');
+        const aiToolsField = document.getElementById('aiToolsField');
+        const aiToolsInput = document.getElementById('ai_tools_specific');
+        
+        if (selectedOption && selectedOption.value !== 'never') {
+            aiToolsField.style.display = 'block';
+            aiToolsInput.required = true;
+        } else {
+            aiToolsField.style.display = 'none';
+            aiToolsInput.required = false;
+        }
+    }
+
+    // Show/hide AI tools field based on frequency selection
+    function toggleAIToolsField(radio) {
+        const aiToolsField = document.getElementById('aiToolsField');
+        const aiToolsInput = document.getElementById('ai_tools_specific');
+        
+        if (radio.value !== 'never') {
+            aiToolsField.style.display = 'block';
+            aiToolsInput.required = true;
+        } else {
+            aiToolsField.style.display = 'none';
+            aiToolsInput.required = false;
+            aiToolsInput.value = '';
+        }
+    }
+
+    // Set up event listeners for AI frequency radio buttons
+    function setupAIFrequencyListeners() {
+        const frequencyRadios = document.querySelectorAll('input[name="ai_frequency"]');
+        frequencyRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                toggleAIToolsField(this);
+            });
+        });
+    }
+
     // Show/hide "Other" text inputs for both select elements and checkboxes
     function setupOtherField(elementId, isCheckbox = false) {
         const element = document.getElementById(elementId);
@@ -59,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-
+    
     // Set up event listeners for specific checkbox "Other" fields
     function setupCheckboxOther(checkboxId, otherSpecifyId) {
         const checkbox = document.getElementById(checkboxId);
@@ -114,6 +154,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set up the "Select up to two" validation for AI applications
     setupLimitedCheckboxes('ai_value_applications', 2);
 
+    // Initialize AI tools field functionality
+    setupAIFrequencyListeners();
+    initAIToolsField();
+
     // Form submission
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -149,6 +193,14 @@ document.addEventListener('DOMContentLoaded', function() {
             } 
             else if (key === 'ai_value_other_specify' && formData.get('ai_value_applications') && formData.getAll('ai_value_applications').includes('other')) {
                 // This will be added with the checkboxGroups later
+            }
+            // Handle AI tools specific field
+            else if (key === 'ai_tools_specific') {
+                // Only include if frequency is not "never"
+                const frequency = formData.get('ai_frequency');
+                if (frequency && frequency !== 'never') {
+                    jsonData[key] = value;
+                }
             }
             // Regular fields
             else if (!key.endsWith('-other')) {
